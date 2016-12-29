@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const yargs = require('yargs')
 const Conf = require('conf')
 
-const query = require('./index')
+const update = require('./index')
 
 const showError = (err) => {
 	const msg = err.message || err.toString()
@@ -39,6 +39,5 @@ if (argv._[0] === 'init') {
 const stationId = conf.get('station-id')
 const nextStationId = conf.get('next-station-id')
 
-query(stationId, nextStationId)
-.then((time) => process.stdout.write(time + '\n'))
+update(stationId, nextStationId)
 .catch(showError)
