@@ -36,8 +36,8 @@ if (argv._[0] === 'init') {
 
 
 
-const stationId = conf.get('station-id')
-const nextStationId = conf.get('next-station-id')
+const stationId = process.env.STATION_ID || conf.get('station-id')
+const nextStationId = process.env.NEXT_STATION_ID || conf.get('next-station-id')
 
 update(stationId, nextStationId)
 .catch(showError)

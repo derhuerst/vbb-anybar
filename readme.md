@@ -5,6 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/vbb-anybar.svg)](https://www.npmjs.com/package/vbb-anybar)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-anybar.svg)](https://david-dm.org/derhuerst/vbb-anybar)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-anybar.svg)
+[![gitter channel](https://badges.gitter.im/derhuerst/vbb-rest.svg)](https://gitter.im/derhuerst/vbb-rest)
 
 
 ## Installing
