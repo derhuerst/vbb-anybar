@@ -10,25 +10,25 @@ const stations = require('./station-of-stop')
 
 
 
-const routesInDirection = (station, direction) => {
-	station = stations['' + station]
-	direction = stations['' + direction]
+const schedulesInDirection = (station, nextStation) => {
+	station = stations[station]
+	nextStation = stations[nextStation]
 
-	return trips.routes()
-	.pipe(filter.obj((trip) => {
-		const i = trip.stops
-			.findIndex((stop) => stations['' + stop.s] === station)
+	return trips.schedules()
+	.pipe(filter.obj((schedule) => {
+		const i = schedule.route.stops
+			.findIndex((stop) => stations[stop] === station)
 		if (i < 0) return false
 
-		const a = trip.stops[i]
-		const b = trip.stops[i + 1]
-		return a && b && stations['' + b.s] === direction
+		const a = schedule.route.stops[i]
+		const b = schedule.route.stops[i + 1]
+		return a && b && stations[b] === nextStation
 	}))
 }
 
-const linesInDirection = (station, direction) =>
-	routesInDirection(station, direction)
-	.pipe(map((trip, cb) => cb(null, trip.lineId)))
+const linesInDirection = (station, nextStation) =>
+	schedulesInDirection(station, nextStation)
+	.pipe(map((schedule, cb) => cb(null, schedule.route.line)))
 	.pipe(unique())
 	.pipe(map((lineId, cb) => {
 		lines(true, lineId)

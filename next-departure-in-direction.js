@@ -12,20 +12,22 @@ const nextDepartureInDirection = (station, direction) => {
 	.then((lines) => {
 		if (lines.length === 0) throw new Error('no lines found')
 		return departures(station, {
-			when: now + 30 * 1000, duration: 30
+			when: now + 60 * 1000, duration: 60,
+			identifier: 'vbb-anybar'
 		})
-		.then((deps) => deps.filter((dep) => {
-			const line = dep.product.line.toLowerCase().trim()
-			return lines.some((l) => l.name.toLowerCase().trim() === line)
-		}))
-	})
-	.then((deps) => {
-		const dep = deps
-		.filter((dep) => dep.when > now)
-		.sort((d1, d2) => d1.when - d2.when)
-		[0]
-		if (!dep) throw new Error('no departures found')
-		return dep.when - now
+		.then((deps) => {
+			const dep = deps
+			.filter((dep) => {
+				const name = dep.line.name.toLowerCase().trim()
+				return lines.some((l) => l.name.toLowerCase().trim() === name)
+			})
+			.filter((dep) => dep.when > now)
+			.sort((d1, d2) => d1.when - d2.when)
+			[0]
+
+			if (!dep) throw new Error('no departures found')
+			return dep
+		})
 	})
 }
 

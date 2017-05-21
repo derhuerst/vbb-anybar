@@ -25,7 +25,7 @@ const colors = [
 
 module.exports = (from, to) =>
 	nextDepartureInDirection(from, to)
-	.then((ms) => {
-		const i = Math.floor(ms/1000/60/2)
+	.then((dep) => {
+		const i = Math.floor((new Date(dep.when) - Date.now()) / 1000 / 60 / 2)
 		return setColor(colors[i] || 'question')
 	})
