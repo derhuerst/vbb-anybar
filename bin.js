@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict'
 
+const minimist = require('minimist')
 const chalk = require('chalk')
-const yargs = require('yargs')
 const Conf = require('conf')
 
-const update = require('./index')
+const update = require('.')
 
 const showError = (err) => {
 	const msg = err.message || err.toString()
@@ -15,7 +15,7 @@ const showError = (err) => {
 
 
 
-const argv = yargs.argv
+const argv = minimist(process.argv.slice(2))
 const conf = new Conf()
 
 if (argv.help || argv.h) {
