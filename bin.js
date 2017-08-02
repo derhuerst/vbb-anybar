@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-const minimist = require('minimist')
+const mri = require('mri')
 const chalk = require('chalk')
 const Conf = require('conf')
 
@@ -15,7 +15,9 @@ const showError = (err) => {
 
 
 
-const argv = minimist(process.argv.slice(2))
+const argv = mri(process.argv.slice(2), {
+	boolean: ['help', 'h']
+})
 const conf = new Conf()
 
 if (argv.help || argv.h) {
@@ -29,8 +31,8 @@ Usage:
 
 if (argv._[0] === 'init') {
 	if (!argv._[1] || !argv._[2]) showError('Missing arguments.')
-	conf.set('station-id', argv._[0])
-	conf.set('next-station-id', argv._[1])
+	conf.set('station-id', argv._[1])
+	conf.set('next-station-id', argv._[2])
 	process.exit(0)
 }
 
