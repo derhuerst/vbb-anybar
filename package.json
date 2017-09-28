@@ -1,8 +1,8 @@
 {
-	"name":         "vbb-anybar",
-	"description":  "Let the status bar show you when to catch the train.",
-	"version":      "0.1.0",
-	"main":         "index.js",
+	"name": "vbb-anybar",
+	"description": "Let the status bar show you when to catch the train.",
+	"version": "0.1.0",
+	"main": "index.js",
 	"files": [
 		"index.js",
 		"bin.js",
@@ -11,18 +11,27 @@
 	"bin": {
 		"vbb-anybar": "./bin.js"
 	},
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/vbb-anybar",
-	"repository":   "derhuerst/vbb-anybar",
-	"bugs":         "https://github.com/derhuerst/vbb-anybar/issues",
-	"license":      "ISC",
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/vbb-anybar",
+	"repository": "derhuerst/vbb-anybar",
+	"bugs": "https://github.com/derhuerst/vbb-anybar/issues",
+	"license": "ISC",
 	"preferGlobal": true,
-	"engines" :     {"node": ">=6"},
+	"engines": {
+		"node": ">=6"
+	},
 	"keywords": [
-		"vbb", "bvg", "realtime", "disruptions", "announcements", "closures", "interruption"
+		"vbb",
+		"bvg",
+		"realtime",
+		"disruptions",
+		"announcements",
+		"closures",
+		"interruption"
 	],
 	"dependencies": {
-		"chalk": "^1.1.3",
+		"anybar": "^3.0.0",
+		"chalk": "^2.1.0",
 		"conf": "^1.1.1",
 		"map-stream": "^0.1.0",
 		"mri": "^1.1.0",
