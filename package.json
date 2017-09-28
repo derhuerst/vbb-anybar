@@ -3,8 +3,14 @@
 	"description":  "Let the status bar show you when to catch the train.",
 	"version":      "0.1.0",
 	"main":         "index.js",
-	"files":        ["index.js"],
-	"bin":          {"vbb-anybar": "./bin.js"},
+	"files": [
+		"index.js",
+		"bin.js",
+		"lib"
+	],
+	"bin": {
+		"vbb-anybar": "./bin.js"
+	},
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/vbb-anybar",
 	"repository":   "derhuerst/vbb-anybar",

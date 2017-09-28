@@ -3,7 +3,7 @@
 
 const dgram = require('dgram')
 
-const nextDepartureInDirection = require('./next-departure-in-direction')
+const nextDepartureInDirection = require('./lib/next-departure-in-direction')
 
 const setColor = (color) =>
 	new Promise((yay, nay) => {
