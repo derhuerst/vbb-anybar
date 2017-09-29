@@ -17,7 +17,24 @@ npm install -g vbb-anybar
 
 ## Usage
 
-todo
+*This guide assumes you have the [AnyBar app](https://github.com/tonsky/AnyBar#anybar-os-x-menubar-status-indicator) installed.*
+
+`vbb-anybar` needs the station where you want to catch the train and the direction, which is just the next station your train will pass. You can find them using [`vbb-stations-cli`](https://github.com/derhuerst/vbb-stations-cli#vbb-stations-cli). To set them, run the following:
+
+```shell
+vbb-anybar init <station-id> <next-station-id>
+```
+
+From now on, if you call `vbb-anybar` (without any arguments), it will talk to the AnyBar app and set a color that tells you when to leave. You would usually run this every few seconds.
+
+
+## API
+
+```
+Usage:
+    vbb-anybar
+    vbb-anybar init <station-id> <next-station-id>
+```
 
 
 ## Contributing
