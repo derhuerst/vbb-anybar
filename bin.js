@@ -13,8 +13,6 @@ const showError = (err) => {
 	process.exit(1)
 }
 
-
-
 const argv = mri(process.argv.slice(2), {
 	boolean: ['help', 'h']
 })
@@ -36,8 +34,6 @@ if (argv._[0] === 'init') {
 	argv._[3] ? conf.set('time-to-station', argv._[3]) : conf.set('time-to-station', 0)
 	process.exit(0)
 }
-
-
 
 const stationId = process.env.STATION_ID || conf.get('station-id')
 const nextStationId = process.env.NEXT_STATION_ID || conf.get('next-station-id')

@@ -22,10 +22,12 @@ npm install -g vbb-anybar
 `vbb-anybar` needs the station where you want to catch the train and the direction, which is just the next station your train will pass. You can find them using [`vbb-stations-cli`](https://github.com/derhuerst/vbb-stations-cli#vbb-stations-cli). To set them, run the following:
 
 ```shell
-vbb-anybar init <station-id> <next-station-id>
+vbb-anybar init <station-id> <next-station-id> [<time-to-station>]
 ```
 
 From now on, if you call `vbb-anybar` (without any arguments), it will talk to the AnyBar app and set a color that tells you when to leave. You would usually run this every few seconds.
+
+time-to-station is an optional argument which allows you to configure a time (in minutes) for how long it takes you to get to the station. The color telling you when to leave will calculate with this time as well.
 
 
 ## API
@@ -33,7 +35,7 @@ From now on, if you call `vbb-anybar` (without any arguments), it will talk to t
 ```
 Usage:
     vbb-anybar
-    vbb-anybar init <station-id> <next-station-id>
+    vbb-anybar init <station-id> <next-station-id> [<time-to-station>]
 ```
 
 
