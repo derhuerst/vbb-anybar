@@ -15,12 +15,12 @@ const colors = [
 ]
 const minute = 1000 * 60
 
-module.exports = (from, to) => {
+module.exports = (from, to, timeToStation) => {
 	return depsInDirection(from, to)
 	.then((deps) => {
 		const dep = deps[0]
 
-		const i = Math.floor((new Date(dep.when) - Date.now()) / 2 / minute)
+		const i = Math.floor((new Date(dep.when) - Date.now()) / 2 / minute) + timeToStation
 		return setColor(colors[i] || 'question')
 	})
 }
