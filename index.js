@@ -18,7 +18,7 @@ const colors = [
 const minute = 1000 * 60
 
 module.exports = (from, to, timeToStation = 0) => {
-	let options = {}
+	const options = {}
 
 	if (Number.isNaN(timeToStation)) throw new Error('invalid when parameter')
 	options.when = Date.now() + timeToStation * minute
@@ -32,7 +32,7 @@ module.exports = (from, to, timeToStation = 0) => {
 		// Comment left in for future debugging as required
 		// console.log(`Next departure is at ${dep.when}, in ${minutesToDeparture} minutes time. This gives ${spareTimeBeforeDeparture} minutes spare, after spending ${timeToStation} minutes on the way to the station.`)
 
-		let timeColor = colors[spareTimeBeforeDeparture / 2]
+		const timeColor = colors[spareTimeBeforeDeparture / 2]
 		return setColor(timeColor || 'question')
 	})
 }
