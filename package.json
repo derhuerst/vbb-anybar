@@ -1,7 +1,7 @@
 {
 	"name": "vbb-anybar",
 	"description": "Let the status bar show you when to catch the train.",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
