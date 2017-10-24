@@ -2,7 +2,11 @@
 'use strict'
 
 const anybar = require('anybar')
-const depsInDirection = require('vbb-departures-in-direction')
+const createDepsInDirection = require('vbb-departures-in-direction')
+const departures = require('vbb-hafas/lib/departures')
+const journeyPart = require('vbb-hafas/lib/journey-part')
+
+const depsInDirection = createDepsInDirection(departures, journeyPart)
 
 const setColor = (color) => {
 	anybar(color, {port: 1738})
