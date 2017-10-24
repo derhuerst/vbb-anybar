@@ -2,7 +2,7 @@
 'use strict'
 
 const anybar = require('anybar')
-const createDepsInDirection = require('vbb-departures-in-direction')
+const createDepsInDirection = require('hafas-departures-in-direction')
 const departures = require('vbb-hafas/lib/departures')
 const journeyPart = require('vbb-hafas/lib/journey-part')
 
