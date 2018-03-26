@@ -3,10 +3,9 @@
 
 const anybar = require('anybar')
 const createDepsInDirection = require('hafas-departures-in-direction')
-const departures = require('vbb-hafas/lib/departures')
-const journeyPart = require('vbb-hafas/lib/journey-part')
+const {departures, journeyLeg} = require('vbb-hafas')
 
-const depsInDirection = createDepsInDirection(departures, journeyPart)
+const depsInDirection = createDepsInDirection(departures, journeyLeg)
 
 const setColor = (color) => {
 	anybar(color, {port: 1738})
@@ -21,16 +20,17 @@ const colors = [
 ]
 const minute = 1000 * 60
 
-module.exports = (from, to, timeToStation = 0) => {
-	const options = {}
+module.exports = (origin, direction, timeToStation = 0) => {
+	const options = {results: 1}
 
 	if (Number.isNaN(timeToStation)) throw new Error('invalid when parameter')
 	options.when = Date.now() + timeToStation * minute
 
-	return depsInDirection(from, to, options)
+	return depsInDirection(origin, direction, options)
 	.then((deps) => {
 		const dep = deps[0]
-		const minutesToDeparture = Math.floor((new Date(dep.when) - Date.now()) / minute)
+		const msToDepature = new Date(dep.when) - Date.now()
+		const minutesToDeparture = Math.floor(msToDepature / minute)
 		const spareTimeBeforeDeparture = minutesToDeparture - timeToStation
 
 		// Comment left in for future debugging as required

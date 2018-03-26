@@ -32,8 +32,8 @@
 		"anybar": "^3.0.0",
 		"chalk": "^2.1.0",
 		"conf": "^1.1.1",
-		"hafas-departures-in-direction": "^0.1.0",
+		"hafas-departures-in-direction": "^0.2.0",
 		"mri": "^1.1.0",
-		"vbb-hafas": "^3.0.0"
+		"vbb-hafas": "^4.1.1"
 	}
 }
