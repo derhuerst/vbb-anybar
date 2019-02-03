@@ -2,10 +2,9 @@
 'use strict'
 
 const anybar = require('anybar')
-const createDepsInDirection = require('hafas-departures-in-direction')
-const {departures, journeyLeg} = require('vbb-hafas')
+const createHafas = require('vbb-hafas')
 
-const depsInDirection = createDepsInDirection(departures, journeyLeg)
+const {departures} = createHafas('vbb-anybar')
 
 const setColor = (color) => {
 	anybar(color, {port: 1738})
@@ -21,14 +20,15 @@ const colors = [
 const minute = 1000 * 60
 
 module.exports = (origin, direction, timeToStation = 0) => {
-	const options = {results: 1}
-
 	if (Number.isNaN(timeToStation)) throw new Error('invalid when parameter')
-	options.when = Date.now() + timeToStation * minute
 
-	return depsInDirection(origin, direction, options)
+	return departures(origin, {
+		direction,
+		results: 3,
+		when: Date.now() + timeToStation * minute
+	})
 	.then((deps) => {
-		const dep = deps[0]
+		const dep = deps.find(dep => !dep.cancelled)
 		const msToDepature = new Date(dep.when) - Date.now()
 		const minutesToDeparture = Math.floor(msToDepature / minute)
 		const spareTimeBeforeDeparture = minutesToDeparture - timeToStation
