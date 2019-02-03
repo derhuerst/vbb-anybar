@@ -36,7 +36,7 @@ module.exports = (origin, direction, timeToStation = 0) => {
 		// Comment left in for future debugging as required
 		// console.log(`Next departure is at ${dep.when}, in ${minutesToDeparture} minutes time. This gives ${spareTimeBeforeDeparture} minutes spare, after spending ${timeToStation} minutes on the way to the station.`)
 
-		const timeColor = colors[spareTimeBeforeDeparture / 2]
+		const timeColor = colors[spareTimeBeforeDeparture / 2 | 0]
 		return setColor(timeColor || 'question')
 	})
 }
